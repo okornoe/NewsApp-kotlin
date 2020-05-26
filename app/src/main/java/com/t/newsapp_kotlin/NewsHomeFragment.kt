@@ -18,6 +18,11 @@ class NewsHomeFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentNewsHomeBinding>(inflater, R.layout.fragment_news_home, container, false)
+
+        val adapter = NewsAdapter()
+        binding.newsList.adapter = adapter
+        adapter.listNames
+
         return binding.root
     }
 
