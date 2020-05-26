@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/business"
+        android:title="Business"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/entertainment"
+        android:title="Entertainment"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/health"
+        android:title="Health"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/science"
+        android:title="Science"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/sports"
+        android:title="Sports"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/technology"
+        android:title="Technology"
+        android:enabled="true"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
 
 </menu>
