@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.t.newsapp_kotlin.NewsViewModel" />
+    </data>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">-->
+    android:layout_height="match_parent">
+
 
 <TextView android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/tv_news_list"
     android:textSize="24sp"
+    android:text="@{viewModel.response}"
     xmlns:android="http://schemas.android.com/apk/res/android" />
-
-<!--</LinearLayout>-->
+</LinearLayout>
+</layout>
