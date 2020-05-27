@@ -1,5 +1,6 @@
 package com.t.newsapp_kotlin
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,24 +21,25 @@ class NewsViewModel : ViewModel() {
         get() = _response
 
     /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
+     * Call getNewsData() on init so we can display status immediately.
      */
     init {
-        getMarsRealEstateProperties()
+        getNewsData()
     }
 
     /**
      * Sets the value of the status LiveData to the Mars API status.
      */
-    private fun getMarsRealEstateProperties() {
+    private fun getNewsData() {
         _response.value = NewsApi.retrofitService.getProperties().enqueue(
-            object: Callback<String> {
-                override fun onFailure(call: Call<String>, t: Throwable) {
+            object: Callback<NewsData> {
+                override fun onFailure(call: Call<NewsData>, t: Throwable) {
                     _response.value = "Failure: " + t.message
                 }
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    _response.value = response.body()
+                override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
+                    _response.value = response.body().toString()
+                    Log.i("NewsViewModel", _response.value)
                 }
             }).toString()
     }
