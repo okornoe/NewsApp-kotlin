@@ -31,14 +31,10 @@ class NewsHomeFragment : Fragment() {
             R.layout.fragment_news_home, container, false)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.setLifecycleOwner (this )
+        binding.setLifecycleOwner (this)
 
         // Giving the binding access to the NewsViewModel
         binding.viewModel = viewModel
-
-/*        val adapter = NewsAdapter()
-        binding.newsList.adapter = adapter
-        adapter.listNames*/
 
         return binding.root
     }
