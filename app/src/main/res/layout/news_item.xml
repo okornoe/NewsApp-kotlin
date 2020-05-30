@@ -11,78 +11,49 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view"
             android:layout_width="377dp"
-            android:layout_height="304dp"
+            android:layout_height="389dp"
             android:layout_gravity="center"
             card_view:cardBackgroundColor="@color/cardview_dark_background"
             card_view:cardCornerRadius="4dp">
 
-            <!--<TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_news_title"
-            android:text="New Title"
-            android:textSize="24sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_news_author"
-            android:text="Author Name"
-            android:textSize="24sp"/>
-
-        <TextView android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_news_description"
-            android:text="News Description"
-            android:textSize="24sp"/>
-
-        <TextView
-            android:id="@+id/tv_news_publication_date"
-            android:layout_width="218dp"
-            android:layout_height="188dp"
-            android:text="Publication date"
-            android:textSize="24sp" />-->
             <LinearLayout
+                android:id="@+id/cd_view_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tv_new_title"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="TextView"
+                    android:layout_height="73dp"
+                    android:text="News Title"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"/>
+                    android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_news_description"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="TextView"
+                    android:layout_height="155dp"
+                    android:text="Description of the News"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"/>
+                    android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/tx_author_name"
                     android:layout_width="match_parent"
-                    android:layout_height="49dp"
-                    android:text="TextView"
+                    android:layout_height="73dp"
+                    android:text="Name of Author"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"/>
+                    android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_date_publication"
+                    android:layout_width="362dp"
                     android:layout_height="129dp"
-                    android:text="TextView"
+                    android:text="Date of new publication"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"/>
-
+                    android:textSize="30sp" />
             </LinearLayout>
-
-
         </com.google.android.material.card.MaterialCardView>
-
     </LinearLayout>
 </layout>
