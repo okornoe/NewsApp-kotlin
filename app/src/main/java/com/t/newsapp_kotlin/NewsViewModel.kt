@@ -6,6 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.ToJson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
@@ -13,6 +17,7 @@ import org.json.JSONStringer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 import java.util.*
 
 /**
@@ -27,6 +32,12 @@ class NewsViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
+    private var viewModelJob = Job()
+
+    private val coroutineScope = CoroutineScope(
+        viewModelJob + Dispatchers.Main
+    )
+
     /**
      * Call getNewsData() on init so we can display status immediately.
      */
@@ -39,7 +50,7 @@ class NewsViewModel : ViewModel() {
      */
     private fun getNewsData() {
 
-        _response.value = NewsApi.retrofitService.getProperties().enqueue(
+/*        _response.value = NewsApi.retrofitService.getProperties().enqueue(
             object : Callback<NewsData> {
                 override fun onFailure(call: Call<NewsData>, t: Throwable) {
                     _response.value = "Failure: " + t.message
@@ -49,6 +60,22 @@ class NewsViewModel : ViewModel() {
                 override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
                     _response.value = response.body().toString()
                 }
-            }).toString()
+            }).toString()*/
+
+        coroutineScope.launch {
+            var getPropertiesDeferred = NewsApi.retrofitService.getProperties()
+
+            try {
+                var listResult = getPropertiesDeferred.await()
+                _response.value = listResult.toString()
+            } catch (e: Exception) {
+                _response.value = "Failure: ${e.message}"
+            }
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
