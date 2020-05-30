@@ -28,6 +28,11 @@ class NewsViewModel : ViewModel() {
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
 
+    private val _property = MutableLiveData<Article>() // watch here could be Article too
+
+    val property: LiveData<Article>
+        get() = _property
+
     // The external immutable LiveData for the response String
     val response: LiveData<String>
         get() = _response
@@ -56,6 +61,11 @@ class NewsViewModel : ViewModel() {
             try {
                 var listResult = getPropertiesDeferred.await()
                 _response.value = listResult.toString()
+
+                //watch here too
+                if (listResult.articles?.size!! > 0) {
+                    _property.value = listResult.articles!![0]
+                }
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
             }
