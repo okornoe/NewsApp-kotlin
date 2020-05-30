@@ -7,7 +7,7 @@ data class NewsData(
 )
 
 data class Article(
-    val author: Any?,
+    val author: String?,
     //val content: String?,
     val description: String?,
     val publishedAt: String?,
