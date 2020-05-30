@@ -16,7 +16,7 @@
     android:orientation="vertical"
     >-->
 <!--    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_list"
+        android:id="@+id/news_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_news_list"
             android:textSize="24sp"
-            android:text="@{viewModel.response}"/>
+            android:text="@{viewModel.property.component6()}"/>
     </ScrollView>
 
 <!--</LinearLayout>-->
