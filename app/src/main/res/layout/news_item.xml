@@ -1,21 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable
-            name="viewModel"
-            type="com.t.newsapp_kotlin.NewsViewModel" />
-    </data>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="377dp"
+            android:layout_height="304dp"
+            android:layout_gravity="center"
+            card_view:cardBackgroundColor="@color/cardview_dark_background"
+            card_view:cardCornerRadius="4dp">
+
+            <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_news_title"
+            android:text="New Title"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_news_author"
+            android:text="Author Name"
+            android:textSize="24sp"/>
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_news_description"
+            android:text="News Description"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/tv_news_publication_date"
+            android:layout_width="218dp"
+            android:layout_height="188dp"
+            android:text="Publication date"
+            android:textSize="24sp" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="TextView"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"/>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="TextView"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"/>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:text="TextView"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"/>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="129dp"
+                    android:text="TextView"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"/>
+
+            </LinearLayout>
 
 
-<TextView android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/tv_news_list"
-    android:textSize="24sp"
+        </com.google.android.material.card.MaterialCardView>
 
-    xmlns:android="http://schemas.android.com/apk/res/android" />
-</LinearLayout>
+    </LinearLayout>
 </layout>
