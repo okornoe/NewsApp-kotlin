@@ -4,9 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.squareup.moshi.Json
+import com.squareup.moshi.ToJson
+import okhttp3.ResponseBody
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONStringer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 /**
  * The [ViewModel] that is attached to the [NewsHomeFragment].
@@ -28,18 +35,19 @@ class NewsViewModel : ViewModel() {
     }
 
     /**
-     * Sets the value of the status LiveData to the Mars API status.
+     * Sets the value of the status LiveData to the News API status.
      */
     private fun getNewsData() {
+
         _response.value = NewsApi.retrofitService.getProperties().enqueue(
-            object: Callback<NewsData> {
+            object : Callback<NewsData> {
                 override fun onFailure(call: Call<NewsData>, t: Throwable) {
                     _response.value = "Failure: " + t.message
+                    //Log.i("response", t.message)
                 }
 
                 override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
                     _response.value = response.body().toString()
-                    Log.i("NewsViewModel", _response.value)
                 }
             }).toString()
     }

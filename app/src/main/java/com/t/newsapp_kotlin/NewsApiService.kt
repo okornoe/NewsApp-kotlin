@@ -1,11 +1,16 @@
 package com.t.newsapp_kotlin
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.ToJson
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://newsapi.org/v2/"
@@ -16,7 +21,7 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
@@ -26,7 +31,7 @@ interface NewsApiService {
             Call<NewsData>
 }
 
-object NewsApi {
+object NewsApi  {
     val retrofitService : NewsApiService by lazy {
         retrofit.create(NewsApiService::class.java) }
 }
