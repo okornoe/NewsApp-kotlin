@@ -50,18 +50,6 @@ class NewsViewModel : ViewModel() {
      */
     private fun getNewsData() {
 
-/*        _response.value = NewsApi.retrofitService.getProperties().enqueue(
-            object : Callback<NewsData> {
-                override fun onFailure(call: Call<NewsData>, t: Throwable) {
-                    _response.value = "Failure: " + t.message
-                    //Log.i("response", t.message)
-                }
-
-                override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
-                    _response.value = response.body().toString()
-                }
-            }).toString()*/
-
         coroutineScope.launch {
             var getPropertiesDeferred = NewsApi.retrofitService.getProperties()
 
