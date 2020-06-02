@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.t.newsapp_kotlin.Article" />
+    </data>
+
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -26,7 +32,7 @@
                     android:id="@+id/tv_new_title"
                     android:layout_width="match_parent"
                     android:layout_height="73dp"
-                    android:text="News Title"
+                    android:text="@{viewModel.title}"
                     android:textColor="#ffffff"
                     android:textSize="30sp" />
 
@@ -34,15 +40,15 @@
                     android:id="@+id/tv_news_description"
                     android:layout_width="match_parent"
                     android:layout_height="155dp"
-                    android:text="Description of the News"
+                    android:text="@{viewModel.description}"
                     android:textColor="#ffffff"
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/tx_author_name"
+                    android:id="@+id/tv_author_name"
                     android:layout_width="match_parent"
                     android:layout_height="73dp"
-                    android:text="Name of Author"
+                    android:text="@{viewModel.author}"
                     android:textColor="#ffffff"
                     android:textSize="30sp" />
 
@@ -50,7 +56,7 @@
                     android:id="@+id/tv_date_publication"
                     android:layout_width="362dp"
                     android:layout_height="129dp"
-                    android:text="Date of new publication"
+                    android:text="@{viewModel.publishedAt}"
                     android:textColor="#ffffff"
                     android:textSize="30sp" />
             </LinearLayout>
