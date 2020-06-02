@@ -34,7 +34,8 @@ class NewsHomeFragment : Fragment() {
         binding.setLifecycleOwner (this)
 
         // Giving the binding access to the NewsViewModel
-        binding.viewModel = viewModel
+        binding.viewModel = NewsAdapter()
+
 
         return binding.root
     }
