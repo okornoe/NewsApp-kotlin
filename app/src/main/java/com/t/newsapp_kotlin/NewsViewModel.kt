@@ -28,18 +28,11 @@ class NewsViewModel : ViewModel() {
     // The internal MutableLiveData String that stores the most recent response
     //private val _response = MutableLiveData<String>()
 
-    private val _property = MutableLiveData<Article>() // watch here could be Article too
+    private var _response = MutableLiveData<String>() // watch here could be Article too
 
-    val property: LiveData<Article>
-        get() = _property
-
-    var data = listOf<Article>()
-
-    var count = data.size
-
-/*    // The external immutable LiveData for the response String
     val response: LiveData<String>
-        get() = _response*/
+        get() = _response
+
 
     private var viewModelJob = Job()
 
@@ -64,14 +57,15 @@ class NewsViewModel : ViewModel() {
 
             try {
                 var listResult = getPropertiesDeferred.await()
-               // _response.value = listResult.toString()
+
+                _response.value = "Success: ${listResult.articles?.size} News Items"
 
                 //wprk needs to done to get the response into a list
-                if (listResult.articles?.size!! > 0) {
+               /* if (listResult.articles?.size!! > 0) {
                     data = listResult.articles!!
-                }
+                }*/
             } catch (e: Exception) {
-               // _response.value = "Failure: ${e.message}"
+                _response.value = "Failure: ${e.message}"
             }
         }
     }
