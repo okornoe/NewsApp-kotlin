@@ -29,14 +29,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_new_title"
+                    android:id="@+id/tv_news_title"
                     android:layout_width="match_parent"
                     android:layout_height="73dp"
                     android:text="@{viewModel.title}"
                     android:textColor="#ffffff"
                     android:textSize="30sp" />
 
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_news_description"
                     android:layout_width="match_parent"
                     android:layout_height="155dp"
@@ -58,7 +58,7 @@
                     android:layout_height="129dp"
                     android:text="@{viewModel.publishedAt}"
                     android:textColor="#ffffff"
-                    android:textSize="30sp" />
+                    android:textSize="30sp" />-->
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
