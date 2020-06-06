@@ -33,6 +33,20 @@ class NewsViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
+    //New declaration to receive response
+    private val _property = MutableLiveData<Article>()
+
+    val property: LiveData<Article>
+        get() = _property
+
+
+
+    //New declaration to receive response
+    private val _articleList = MutableLiveData<List<Article>>()
+
+    val articleList: LiveData<List<Article>>
+        get() = _articleList
+
 
     private var viewModelJob = Job()
 
@@ -58,12 +72,10 @@ class NewsViewModel : ViewModel() {
             try {
                 var listResult = getPropertiesDeferred.await()
 
-                _response.value = "Success: ${listResult.articles?.size} News Items"
+                _response.value = "Success: ${listResult.articles} News Items"
+                //_property.value = listResult //this returns an article
 
-                //wprk needs to done to get the response into a list
-               /* if (listResult.articles?.size!! > 0) {
-                    data = listResult.articles!!
-                }*/
+                _articleList.value = listResult.articles //this returns an article
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
             }
