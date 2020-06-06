@@ -1,33 +1,29 @@
 package com.t.newsapp_kotlin
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import com.t.newsapp_kotlin.databinding.NewsItemBinding
 
-class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
-    private val newsData = listOf<Article>()
-
+class NewsAdapter : ListAdapter<NewsData, NewsViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val inflaterLayout = LayoutInflater.from(parent.context)
-
-        val view = inflaterLayout.inflate(R.layout.news_item,parent,false) as View
-        return NewsViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        return newsData.size;
+        return NewsViewHolder(NewsItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val item = newsData[position]
-        //holder.
-        holder.author?.text   = item.author
-        holder.title?.text  = item.title
-        holder.description?.text  = item.description
-        holder.publishedAt?.text = item.publishedAt
+        val article = getItem(position)
+        holder.bind(article.articles)
+    }
+
+    companion object DiffCallback : DiffUtil.ItemCallback<NewsData>() {
+        override fun areItemsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: NewsData, newItem: NewsData): Boolean {
+           return oldItem.articles == newItem.articles
+        }
     }
 }
 
